@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Basic Mute / Unmute -- Agora</title>
+
+  <link rel="stylesheet" href="../assets/home.css">
+
+</head>
+<body>
+  <header class="header shadow">
+    <div>
+      <img src="../assets/imgs/Logo.png" alt="">
+    </div>
+  </header>
+  <div class="main-content text-center">
+    <h1>WELCOME to POMBO !!</h1>
+    <h2>We love video interaction.</h2>
+    <div class="name">@Matheus_033</div>
+    <div class="time">Monday 11 - 19:30 to 20:00</div>
+
+    <div class="controls">
+    <div>
+      <input type="text" id="token" name="channel" placeholder="Please Enter the Token">
+    </div>
+    </div>
+    <div class="btns">
+      <a class="yellow-btn" onclick="tokenFun()" href="javascript:;">Start</a>
+      <a class="border-btn" href="javascript:;">Cancel</a>
+    </div>
+  </div>
+ 
+  <script>
+     function tokenFun() {
+    var token = document.getElementById('token').value
+    console.log(token);
+    localStorage.setItem('token',token.toString());
+    
+    console.log(localStorage.getItem('token'));
+
+    window.location = 'index.html';
+    // window.location= 
+  }
+  </script>
+</body>
+</html>

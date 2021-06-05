@@ -1,0 +1,162 @@
+
+ @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;600;700&display=swap');
+ body {
+   background-color: #674187 !important;
+   font-family: 'Gothic A1', sans-serif;
+   margin:0;
+ }
+ body, html{
+     height: 100%;
+ }
+ *{
+   box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+ }
+  .header {
+    border-radius: 0 0 30px 30px;
+    background: #4b1b74;
+    background: #4b1b74;
+    background: -moz-linear-gradient(top,  #4b1b74 0%, #6a349f 100%);
+    background: -webkit-linear-gradient(top,  #4b1b74 0%,#6a349f 100%);
+    background: linear-gradient(to bottom,  #4b1b74 0%,#6a349f 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b1b74', endColorstr='#6a349f',GradientType=0 );   
+   padding: 10px 20px ;
+   max-width: 90%;
+   margin: 0 auto;
+ 
+  }
+  .header img{
+    max-width: 80%;
+  }
+  .header.shadow {
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.2);
+ 
+  }
+  .main-content {
+    width: 400px;
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+   }
+   .main-content h1{
+     color: #EAAE31;
+     font-size: 32px;
+     font-weight: 600;
+     margin-bottom: 0;
+  }
+  .main-content h2{
+   color: #ffffff;
+   font-size: 28px;
+   margin-top: 5px;
+   font-weight: 600;
+  }
+  .main-content .name{
+   color: #ffffff;
+   font-size: 36px;
+   font-weight: 600;
+   margin-top: 100px;
+  }
+  .main-content .time{
+   color: #ffffff;
+   font-weight: 200;
+   font-size: 24px;
+  }
+  .main-content .btns {
+    margin:20px 0 ;
+    padding: 0 30px;
+    font-weight: 600;
+  }
+  .main-content .btns a{
+   width: 100%;
+   padding: 8px 6px 3px;
+    border-radius: 50px;
+   display: block;
+   text-align: center;
+   text-decoration: none;
+   font-weight: 700;
+   font-size: 24px;
+   text-transform: uppercase;
+   margin: 10px 0;
+  }
+  .main-content .btns .yellow-btn{
+   background: #eaae31;
+   background: -moz-linear-gradient(left,  #eaae31 0%, #f2d846 49%, #eaae31 100%);
+   background: -webkit-linear-gradient(left,  #eaae31 0%,#f2d846 49%,#eaae31 100%);
+   background: linear-gradient(to right,  #eaae31 0%,#f2d846 49%,#eaae31 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaae31', endColorstr='#eaae31',GradientType=1 );
+   color: #000000;
+   font-weight: 700;
+ 
+  }
+  .main-content .btns .border-btn{
+   border:2px solid #EAAE31;
+   color: #EAAE31;
+   font-weight: 700;
+ 
+  }
+  .controls {
+    margin: 20px 0 10px;
+  }
+ .controls input {
+    background: #4b1b74;
+    border:1px solid #321150;
+    width: 100%;
+    border-radius: 4px;
+    height: 50px;
+    outline: none;
+    box-shadow: none;
+    color: #ffffff;
+    padding: 0 20px;
+ }
+
+  .video-grid{
+      height: 100%;
+  }
+  .video-view{
+      display: flex;
+      height: 90%;
+      flex-flow: row wrap;
+  }
+  .video-view .video-placeholder{
+       
+        margin: 10px;
+        border-radius: 15px;
+        background: red;
+        width: 100%;
+  }
+  @media screen and (min-width:768px) {
+    .video-view .video-placeholder{  
+    flex: 1;
+    }
+  }
+  .call-controls {
+    position: absolute;
+    max-width: 100%;
+    border-radius: 50px;
+    width: 600px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 30px;
+    background: -moz-linear-gradient(top,  rgba(75,27,116,0.8) 0%, rgba(106,52,159,0.8) 100%);
+    background: -webkit-linear-gradient(top,  rgba(75,27,116,0.8) 0%,rgba(106,52,159,0.8) 100%);
+    background: linear-gradient(to bottom,  rgba(75,27,116,0.8) 0%,rgba(106,52,159,0.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc4b1b74', endColorstr='#cc6a349f',GradientType=0 );    
+    text-align: center;
+  }
+  .call-controls a {
+    margin: 0 15px;
+    vertical-align: middle;
+    opacity: 0.5;
+    display: inline-block;
+    height: 80px;
+    width: 65px;
+    padding: 23px 0;
+    text-align: center;
+}
+.call-controls a.active {
+  background: #53257b;
+  opacity: 1;
+}
