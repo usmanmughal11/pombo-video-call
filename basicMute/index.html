@@ -69,17 +69,20 @@
       <button id="mute-video" type="button" class="btn btn-primary btn-sm">Mute Video</button>
     </div> -->
     <div class="container-fluid">
-    <div class="video-group">
+    <div class="video-group" id="remote-playerlist">
       <div class="vid-col">
         <p id="local-player-name" class="player-name"></p>
         <div id="local-player" class="player"></div>
       </div>
       <!-- <div class="w-100"></div> -->
-      <div class="vid-col">
+      <!-- <div class="vid-col">
         <div id="remote-playerlist"></div>
-      </div>
+      </div> -->
     </div>
     <div class="call-controls">
+      <i class="minimize">
+        <img src="../assets/imgs/minimize.png" alt="">
+      </i>
       <a href="javascript:;" id="leave" class="msg-icon active"><img src="../assets/imgs/chat.png" alt=""></a>
       <a href="javascript:;" id="mute-video" class="video-icon"><img src="../assets/imgs/video.png" alt=""></a>
       <a href="javascript:;" id="mute-audio" class="mic-icon"><img src="../assets/imgs/mic.png" alt=""></a>

@@ -146,7 +146,7 @@ async function subscribe(user, mediaType) {
   if (mediaType === 'video') {
     if ($(`#player-wrapper-${uid}`).length === 0) {
       const player = $(`
-        <div id="player-wrapper-${uid}">
+        <div class="vid-col" id="player-wrapper-${uid}">
           <p class="player-name">remoteUser(${uid})</p>
           <div id="player-${uid}" class="player"></div>
         </div>
@@ -214,3 +214,12 @@ async function unmuteVideo() {
   localTrackState.videoTrackEnabled = true;
   $("#mute-video").removeClass("active");
 }
+$('.minimize').on('click',function(){
+  if($(this).hasClass('active')){
+    $(this).removeClass('active');
+    $('.call-controls').removeClass('minimized');
+  } else {
+    $(this).addClass('active');
+    $('.call-controls').addClass('minimized');
+  }
+})

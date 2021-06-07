@@ -133,7 +133,7 @@
   }
   .call-controls {
     position: absolute;
-    max-width: 100%;
+    max-width: 95%;
     border-radius: 50px;
     width: 600px;
     left: 0;
@@ -159,4 +159,75 @@
 .call-controls a.active {
   background: #53257b;
   opacity: 1;
+}
+.call-controls.minimized {
+  width: 25px;
+    height: 25px;
+    left: 20px;
+    bottom: 20px;
+    right: auto;
+}
+.call-controls.minimized a{
+  visibility: hidden;
+}
+
+.minimize{
+  position: absolute;
+  left: 20px;
+  height: 24px;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+.minimize img{
+  width: 20px;
+}
+.call-controls.minimized i.minimize{
+     left: 0;
+    right: 0;
+    top: 0;
+}
+.call-controls.minimized i.minimize img{
+width: 13px;
+}
+@media screen and (max-width:768px) {
+  .main-content h1{
+   font-size: 22px;
+ }
+ .main-content h2{
+  font-size: 16px;
+ }
+ .main-content .name{
+  font-size: 22px;
+ }
+ .main-content .time{
+  font-size: 16px;
+ }
+ .call-controls {
+  position: absolute;
+  border-radius: 50px;
+  bottom: 20px;
+ 
+}
+.call-controls a {
+  margin: 0 10px;
+  height: 45px;
+  width: 40px;
+  padding: 12px 0;
+}
+.call-controls a img{
+  width: 25px;
+}
+ .video-group{
+  bottom: 5px;
+  top: 75px;
+  left: 5px;
+  right: 5px;
+ }
+ .video-group .vid-col {
+  padding: 5px;
+  max-height: 50%;
+  flex: 1;
+  min-width: 50%;
+}
 }
