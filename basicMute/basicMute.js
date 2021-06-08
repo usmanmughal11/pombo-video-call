@@ -84,6 +84,11 @@ $("#mute-video").click(function (e) {
   }
 })
 
+function muteOther(id){
+  console.log(id);
+  alert(id)
+}
+
 async function join() {
   // add event listener to play remote tracks when remote users join, publish and leave.
   client.on("user-published", handleUserPublished);
@@ -148,6 +153,7 @@ async function subscribe(user, mediaType) {
       const player = $(`
         <div class="vid-col" id="player-wrapper-${uid}">
           <p class="player-name">remoteUser(${uid})</p>
+          <h1 class="mute-remote" onclick="muteOther(${uid})"></h1>
           <div id="player-${uid}" class="player"></div>
         </div>
       `);
@@ -161,6 +167,8 @@ async function subscribe(user, mediaType) {
     user.audioTrack.play();
   }
 }
+
+
 
 function handleUserJoined(user) {
   const id = user.uid;
@@ -191,6 +199,7 @@ async function muteAudio() {
   if (!localTracks.audioTrack) return;
   await localTracks.audioTrack.setEnabled(false);
   localTrackState.audioTrackEnabled = false;
+  // MuteRemoteVideoStream();
   $("#mute-audio").addClass("active");
 }
 
