@@ -68,6 +68,14 @@ $("#leave").click(function (e) {
   leave();
 });
 
+$(".mute-remote-audio").click(function (e) {
+  muteRemoteAudio();
+  // if (localTrackState.audioTrackEnabled) {
+  // } else {
+  //   unmuteAudio();
+  // }
+});
+
 $("#mute-audio").click(function (e) {
   if (localTrackState.audioTrackEnabled) {
     muteAudio();
@@ -84,10 +92,6 @@ $("#mute-video").click(function (e) {
   }
 })
 
-function muteOther(id){
-  console.log(id);
-  alert(id)
-}
 
 async function join() {
   // add event listener to play remote tracks when remote users join, publish and leave.
@@ -153,7 +157,7 @@ async function subscribe(user, mediaType) {
       const player = $(`
         <div class="vid-col" id="player-wrapper-${uid}">
           <p class="player-name">remoteUser(${uid})</p>
-          <h1 class="mute-remote" onclick="muteOther(${uid})"></h1>
+          <h1 class="mute-remote" onclick="muteOther(${user})">Mute Me</h1>
           <div id="player-${uid}" class="player"></div>
         </div>
       `);
@@ -203,6 +207,17 @@ async function muteAudio() {
   $("#mute-audio").addClass("active");
 }
 
+function muteOther(user){
+  console.log(user);
+}
+
+async function muteRemoteAudio() {
+  if (!remoteTracks.audioTrack) return;
+  await remoteTracks.audioTrack.setEnabled(false);
+  remoteTracks.audioTrackEnabled = false;
+  // MuteRemoteVideoStream();
+  $("#mute-audio").addClass("active");
+}
 async function muteVideo() {
   if (!localTracks.videoTrack) return;
   await localTracks.videoTrack.setEnabled(false);
