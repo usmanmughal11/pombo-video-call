@@ -10,6 +10,7 @@
 .video-group .vid-col {
   margin: 10px;
   width: 100%;
+  position: relative;
 }
 @media screen and (min-width:768px) {
   .video-group .vid-col{
@@ -35,4 +36,39 @@
 #success-alert, #success-alert-with-token, #mute-audio, #mute-video {
   display: none;
 }
+.hide {
+  visibility: hidden;
+}
+.dots{
+  position: absolute;
+  display: block;
+  right: 20px;
+  bottom: 10%;
+  width: 10px;  
+  z-index: 1;
+}
+.dots i {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #321150;
+  margin: 5px 0;
+}
+.remote-user-controls a {
+  display: block;
+  padding: 15px 11px;
+  text-decoration: none;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: #000000;
 
+}
+.remote-user-controls a.active {
+  background: #321150;
+}
+.remote-user-controls a img{
+  max-width: 100%;
+  vertical-align: middle;
+}

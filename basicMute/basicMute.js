@@ -147,9 +147,11 @@ async function leave() {
 
 async function subscribe(user, mediaType) {
   const uid = user.uid;
+  const userObj = user;
   // subscribe to a remote user
   await client.subscribe(user, mediaType);
   console.log("subscribe success");
+
 
   // if the video wrapper element is not exist, create it.
   if (mediaType === 'video') {
@@ -157,13 +159,57 @@ async function subscribe(user, mediaType) {
       const player = $(`
         <div class="vid-col" id="player-wrapper-${uid}">
           <p class="player-name">remoteUser(${uid})</p>
-          <h1 class="mute-remote" onclick="muteOther(${user})">Mute Me</h1>
+          <a href="javascript:;" class="dots" id="showRemoteControls-${uid}">
+            <i></i>
+            <i></i>
+            <i></i>
+          </a>
+          <div class='remote-user-controls hide' id="remoteUserControls-${uid}">
+            <a href='javascript:;' class="video-mute-remote" id="videoMuteRemote-${uid}"><img src="../assets/imgs/video.png" alt=""></a>
+            <a href='javascript:;' class="mute-remote" id="muteRemote-${uid}"><img src="../assets/imgs/mic.png" alt=""></a>
+            <a href='javascript:;'><img src="../assets/imgs/chat.png" alt=""></a>
+            <a href='javascript:;' class="hide-remote-controls" id="hideRemoteControls-${uid}">...</a>
+          </div>
           <div id="player-${uid}" class="player"></div>
         </div>
       `);
       $("#remote-playerlist").append(player);
     }
+    $(document).on('click',`#muteRemote-${uid}`, function(){
+      if($(this).hasClass('active')){
+        
+        unmuteRemoteAudio(userObj);
+      } else {
+        
+        muteRemoteAudio(userObj);
+      }
+      $(this).toggleClass('active');
+    })
 
+    $(document).on('click',`#videoMuteRemote-${uid}`, function(){
+      if($(this).hasClass('active')){
+        
+        unmuteRemoteVideo(userObj);
+      } else {
+        
+        muteRemoteVideo(userObj);
+      }
+      $(this).toggleClass('active');
+    })
+    
+   
+    $(document).on('click',`#showRemoteControls-${uid}`, function(){
+      $(`#remoteUserControls-${uid}`).removeClass('hide');
+      $(`#showRemoteControls-${uid}`).addClass('hide')
+    })
+
+    $(document).on('click',`#hideRemoteControls-${uid}`, function(){
+      $(`#remoteUserControls-${uid}`).addClass('hide');
+      $(`#showRemoteControls-${uid}`).removeClass('hide')
+
+
+    })
+    
     // play the remote video.
     user.videoTrack.play(`player-${uid}`);
   }
@@ -208,15 +254,32 @@ async function muteAudio() {
 }
 
 function muteOther(user){
+  alert(user)
   console.log(user);
 }
 
-async function muteRemoteAudio() {
-  if (!remoteTracks.audioTrack) return;
-  await remoteTracks.audioTrack.setEnabled(false);
-  remoteTracks.audioTrackEnabled = false;
+async function muteRemoteAudio(remoteTracks) {
+  console.log(remoteTracks);
+  // MuteRemoteAudioStream (remoteTracks, true)
+  await remoteTracks.audioTrack.stop(`player-${remoteTracks.uid}`);
+  console.log(remoteTracks);
+  // remoteTracks.audioTrackEnabled = false;
+  // if (!remoteTracks.audioTrack) return;
   // MuteRemoteVideoStream();
-  $("#mute-audio").addClass("active");
+  // $("#mute-audio").addClass("active");
+}
+
+async function unmuteRemoteAudio(remoteTracks) {
+  console.log(remoteTracks);
+  // MuteRemoteAudioStream (remoteTracks, true)
+  await remoteTracks.audioTrack.play(`player-${remoteTracks.uid}`);
+  console.log(remoteTracks);
+}
+async function muteRemoteVideo(remoteTracks) {
+  await remoteTracks.videoTrack.stop(`player-${remoteTracks.uid}`);
+}
+async function unmuteRemoteVideo(remoteTracks) {
+  await remoteTracks.videoTrack.play(`player-${remoteTracks.uid}`);
 }
 async function muteVideo() {
   if (!localTracks.videoTrack) return;
